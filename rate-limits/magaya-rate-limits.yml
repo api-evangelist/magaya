@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Magaya
+providerId: magaya
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Logistics
+- Supply Chain
+- Freight Forwarding
+- Rate Limiting
+- Quotas
+description: >-
+  Magaya does not publish fixed numeric rate limits for its APIs. Because the
+  Magaya API runs against a customer's own tenant (Magaya Cloud at
+  https://SYSTEMID.magayacloud.com/api, or an on-premises system), practical
+  throughput is governed by the capacity of that tenant/instance and the
+  historical SOAP/XML Web Service request model rather than by a published
+  per-minute quota. The Digital Freight Portal REST API and Auth0 token issuance
+  may apply provider-side limits, but specific numbers are not documented
+  publicly. Integrators should assume conservative concurrency and implement
+  backoff.
+notes: >-
+  No numeric per-account or per-endpoint limits are documented as of the review
+  date. Confirm any limits for your edition (Cloud vs on-premises) and for the
+  Digital Freight Portal API with Magaya support during reconciliation.
+sources:
+- https://www.magaya.com/magaya-open-api/
+- https://help.magaya.com/s/document-item?language=en_US&bundleId=magaya-api
+- https://developer.qwykportals.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: Magaya API Requests
+  scope: tenant
+  metric: requests
+  limit: not published
+  notes: Throughput bounded by the customer's own Magaya Cloud tenant or on-premises instance capacity.
+- name: Digital Freight Portal REST API
+  scope: account
+  metric: requests
+  limit: not published
+  notes: Provider-side limits may apply on the Qwyk-derived REST API; specific numbers are undocumented.
+- name: Auth0 Token Issuance
+  scope: client
+  metric: tokens
+  limit: not published
+  notes: M2M OAuth token requests are subject to Auth0 tenant limits; reuse tokens until expiry.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on any 429 responses.
+- name: Token Reuse
+  description: For the Digital Freight Portal REST API, cache and reuse OAuth access tokens until expiry rather than requesting a token per call.
+- name: Conservative Concurrency
+  description: Because throughput depends on a per-tenant instance, avoid high parallelism and prefer batched, incremental synchronization (for example via updatedSince filters).
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,176 @@
+aid: magaya
+url: https://raw.githubusercontent.com/api-evangelist/magaya/refs/heads/main/apis.yml
+name: Magaya
+kind: company
+description: Magaya is a logistics and supply chain software company whose cloud
+  Digital Freight Platform runs freight forwarding, warehouse management, customs
+  compliance, rate management, and a digital customer experience portal. Magaya
+  exposes programmatic access to the logistics objects inside a customer's system -
+  Shipments, Warehouse Receipts, Invoices, Items, and financial Transactions -
+  through the Magaya API (a SOAP/XML Web Service) and the newer Magaya Open API
+  collection of web services, plus a REST Digital Freight Portal API inherited from
+  the Qwyk acquisition. API access is gated behind a Magaya subscription and a
+  dedicated API user configured in the customer's own tenant (base URL of the form
+  https://SYSTEMID.magayacloud.com/api); the reference documentation is public but
+  runtime access requires a licensed system, so the resource paths below are
+  honestly modeled from Magaya's published object model rather than confirmed
+  against an open self-serve reference.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Logistics
+- Supply Chain
+- Freight Forwarding
+- Warehouse Management
+- Shipping
+- Customs
+- Transportation
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: magaya:magaya-shipments-api
+  name: Magaya Shipments API
+  tags:
+  - Shipments
+  - Freight
+  - Logistics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.magaya.com/magaya-open-api/
+  baseURL: https://SYSTEMID.magayacloud.com/api
+  properties:
+  - url: https://www.magaya.com/magaya-open-api/
+    type: Documentation
+  - url: https://developer.qwykportals.com/
+    type: APIReference
+  - url: openapi/magaya-openapi.yml
+    type: OpenAPI
+  - url: collections/magaya.postman_collection.json
+    type: PostmanCollection
+  - url: collections/magaya.opencollection.json
+    type: OpenCollection
+  description: Programmatic access to air, ocean, and ground shipments in a Magaya
+    system - list, retrieve, and create shipment records with their consignee,
+    shipper, routing, cargo, and milestone/tracking event data. Endpoint paths are
+    modeled from Magaya's published Open API object model; the runtime API is
+    reached at a per-tenant magayacloud.com base and requires a configured API user.
+- aid: magaya:magaya-warehouse-receipts-api
+  name: Magaya Warehouse Receipts API
+  tags:
+  - Warehouse Receipts
+  - Warehousing
+  - Inventory
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.magaya.com/magaya-open-api/
+  baseURL: https://SYSTEMID.magayacloud.com/api
+  properties:
+  - url: https://www.magaya.com/magaya-open-api/
+    type: Documentation
+  - url: https://developer.qwykportals.com/
+    type: APIReference
+  - url: openapi/magaya-openapi.yml
+    type: OpenAPI
+  - url: collections/magaya.postman_collection.json
+    type: PostmanCollection
+  - url: collections/magaya.opencollection.json
+    type: OpenCollection
+  description: Access warehouse receipts and the cargo pieces, weights, volumes, and
+    inventory balances they record as goods are received into a Magaya-managed
+    warehouse. Supports listing, retrieval, and creation. Paths are honestly
+    modeled from the Magaya warehousing object model and are not confirmed against
+    an open reference.
+- aid: magaya:magaya-invoices-api
+  name: Magaya Invoices API
+  tags:
+  - Invoices
+  - Accounts Receivable
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.magaya.com/magaya-open-api/
+  baseURL: https://SYSTEMID.magayacloud.com/api
+  properties:
+  - url: https://www.magaya.com/magaya-open-api/
+    type: Documentation
+  - url: https://developer.qwykportals.com/
+    type: APIReference
+  - url: openapi/magaya-openapi.yml
+    type: OpenAPI
+  - url: collections/magaya.postman_collection.json
+    type: PostmanCollection
+  - url: collections/magaya.opencollection.json
+    type: OpenCollection
+  description: Read and create accounts-receivable invoices with their line-item
+    charges, currency, taxes, and links to the shipment or warehouse receipt being
+    billed. Modeled from the Magaya API accounting object set (Invoices and Bills);
+    exact operation names depend on the SOAP/XML Web Service or Open API surface in
+    the customer tenant.
+- aid: magaya:magaya-items-api
+  name: Magaya Items API
+  tags:
+  - Items
+  - Commodities
+  - Master Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.magaya.com/magaya-open-api/
+  baseURL: https://SYSTEMID.magayacloud.com/api
+  properties:
+  - url: https://www.magaya.com/magaya-open-api/
+    type: Documentation
+  - url: https://developer.qwykportals.com/
+    type: APIReference
+  - url: openapi/magaya-openapi.yml
+    type: OpenAPI
+  - url: collections/magaya.postman_collection.json
+    type: PostmanCollection
+  - url: collections/magaya.opencollection.json
+    type: OpenCollection
+  description: Manage item and commodity master data - the parts, products, and
+    packaging definitions referenced by shipments, warehouse receipts, and orders,
+    including descriptions, part numbers, dimensions, and inventory balances. Paths
+    are modeled from Magaya's inventory and organization master-data objects.
+- aid: magaya:magaya-transactions-api
+  name: Magaya Transactions API
+  tags:
+  - Transactions
+  - Orders
+  - Documents
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.magaya.com/magaya-open-api/
+  baseURL: https://SYSTEMID.magayacloud.com/api
+  properties:
+  - url: https://www.magaya.com/magaya-open-api/
+    type: Documentation
+  - url: https://developer.qwykportals.com/
+    type: APIReference
+  - url: openapi/magaya-openapi.yml
+    type: OpenAPI
+  - url: collections/magaya.postman_collection.json
+    type: PostmanCollection
+  - url: collections/magaya.opencollection.json
+    type: OpenCollection
+  description: Generic access to Magaya transaction documents - pickup orders,
+    bookings, quotations, sales orders, purchase orders, cargo releases, and other
+    dated transaction records - that share Magaya's common transaction envelope.
+    Endpoints are modeled from Magaya's published transaction object model and flagged
+    as unconfirmed against an open self-serve reference.
+common:
+- type: GitHubOrganization
+  url: https://github.com/magaya-dev
+- type: LinkedIn
+  url: https://www.linkedin.com/company/magaya-corporation-inc-
+- type: Website
+  url: https://www.magaya.com/
+- type: Documentation
+  url: https://help.magaya.com/s/document-item?language=en_US&bundleId=magaya-api
+- type: APIReference
+  url: https://developer.qwykportals.com/
+- type: SignUp
+  url: https://www.magaya.com/start-here/
+- type: Plans
+  url: plans/magaya-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/magaya-rate-limits.yml
+- type: FinOps
+  url: finops/magaya-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Magaya API (Modeled)",
+    "version": "0.1-modeled"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiUsername}}",
+      "password": "{{apiPassword}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Shipments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List shipments", "type": "http" },
+          "http": { "method": "GET", "url": "https://SYSTEMID.magayacloud.com/api/shipments" },
+          "docs": "Lists shipments in the Magaya system. Modeled endpoint; access requires a Magaya subscription and configured API user."
+        },
+        {
+          "info": { "name": "Create a shipment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://SYSTEMID.magayacloud.com/api/shipments",
+            "body": { "type": "json", "data": "{ \"mode\": \"Ocean\" }" }
+          },
+          "docs": "Creates a shipment. Modeled endpoint."
+        },
+        {
+          "info": { "name": "Retrieve a shipment", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/shipments/:guid",
+            "params": [
+              { "name": "guid", "value": "", "type": "path", "description": "Magaya object GUID." }
+            ]
+          },
+          "docs": "Retrieves a shipment by GUID. Modeled endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Warehouse Receipts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List warehouse receipts", "type": "http" },
+          "http": { "method": "GET", "url": "https://SYSTEMID.magayacloud.com/api/warehouse-receipts" },
+          "docs": "Lists warehouse receipts. Modeled endpoint."
+        },
+        {
+          "info": { "name": "Retrieve a warehouse receipt", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/warehouse-receipts/:guid",
+            "params": [
+              { "name": "guid", "value": "", "type": "path", "description": "Magaya object GUID." }
+            ]
+          },
+          "docs": "Retrieves a warehouse receipt by GUID. Modeled endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invoices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List invoices", "type": "http" },
+          "http": { "method": "GET", "url": "https://SYSTEMID.magayacloud.com/api/invoices" },
+          "docs": "Lists accounts-receivable invoices. Modeled endpoint."
+        },
+        {
+          "info": { "name": "Retrieve an invoice", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/invoices/:guid",
+            "params": [
+              { "name": "guid", "value": "", "type": "path", "description": "Magaya object GUID." }
+            ]
+          },
+          "docs": "Retrieves an invoice by GUID. Modeled endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Items", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List items", "type": "http" },
+          "http": { "method": "GET", "url": "https://SYSTEMID.magayacloud.com/api/items" },
+          "docs": "Lists item and commodity master data. Modeled endpoint."
+        },
+        {
+          "info": { "name": "Retrieve an item", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/items/:guid",
+            "params": [
+              { "name": "guid", "value": "", "type": "path", "description": "Magaya object GUID." }
+            ]
+          },
+          "docs": "Retrieves an item by GUID. Modeled endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Transactions", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List transactions", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/transactions?type=Booking",
+            "params": [
+              { "name": "type", "value": "Booking", "type": "query", "description": "Transaction type filter." }
+            ]
+          },
+          "docs": "Lists Magaya transaction documents. Modeled endpoint."
+        },
+        {
+          "info": { "name": "Retrieve a transaction", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/transactions/:guid",
+            "params": [
+              { "name": "guid", "value": "", "type": "path", "description": "Magaya object GUID." }
+            ]
+          },
+          "docs": "Retrieves a transaction by GUID. Modeled endpoint."
+        }
+      ]
+    }
+  ]
+}

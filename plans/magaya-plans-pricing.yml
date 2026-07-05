@@ -1,0 +1,87 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Magaya
+providerId: magaya
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Logistics
+- Supply Chain
+- Freight Forwarding
+- Warehouse Management
+- Plans
+description: >-
+  Magaya does not publish standard list pricing, and there is no self-serve,
+  separately-priced API product. API access is included with a Magaya Digital
+  Freight Platform subscription (Magaya Supply Chain and related modules such as
+  the Digital Freight Portal and Rate Management); pricing is quote-based and
+  arranged through Magaya sales. Editions are modular - freight forwarding,
+  warehouse management, customs compliance, rate management, CRM, and the
+  customer-facing portal can be licensed together or independently - so the API
+  a given customer can call depends on which modules they license. Exact fees are
+  not published and are not reconciled here.
+notes: >-
+  There is no public API price sheet or free API tier. To use any Magaya API you
+  need a licensed Magaya system and a dedicated API user configured inside it.
+  Confirm current editions, module bundles, and rates with Magaya sales during
+  reconciliation.
+sources:
+- https://www.magaya.com/
+- https://www.magaya.com/magaya-open-api/
+- https://www.magaya.com/start-here/
+- https://www.getapp.com/transportation-logistics-software/a/magaya-cargo-system/
+plans:
+- id: magaya-subscription
+  name: Magaya Digital Freight Platform Subscription
+  type: enterprise
+  description: >-
+    Commercial subscription to Magaya Supply Chain and related modules. Includes
+    programmatic access via the Magaya API (SOAP/XML Web Service) and the Magaya
+    Open API for the licensed objects. Priced by quote based on modules, users,
+    and volume.
+  entries:
+  - label: Platform Subscription
+    name: platform_subscription
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (quote-based)
+    userMultiplied: true
+  elements:
+  - name: Magaya API (SOAP/XML Web Service)
+  - name: Magaya Open API
+  - name: Freight Forwarding
+  - name: Warehouse Management
+  - name: Customs Compliance
+  - name: Rate Management
+- id: magaya-digital-freight-portal
+  name: Digital Freight Portal (Qwyk) API
+  type: enterprise
+  description: >-
+    The customer-facing digital experience portal inherited from the Qwyk
+    acquisition, with a REST API documented at developer.qwykportals.com and
+    Auth0 machine-to-machine OAuth authentication. Licensed as part of the
+    platform; partner/customer-gated.
+  entries:
+  - label: Portal and REST API
+    name: portal_rest_api
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (quote-based)
+    userMultiplied: false
+  elements:
+  - name: Digital Freight Portal REST API
+  - name: Quotes, Bookings, Shipments, Rates, Tracking
+  - name: Auth0 M2M OAuth Clients
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

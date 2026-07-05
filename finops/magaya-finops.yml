@@ -1,0 +1,96 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Magaya
+providerId: magaya
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Logistics
+- Supply Chain
+- Freight Forwarding
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Magaya spend. Magaya is licensed as a commercial SaaS
+  subscription to the Digital Freight Platform, priced by quote rather than by
+  API usage. There is no metered, pay-per-call API billing - the API is an
+  included capability of the platform subscription. The dominant cost drivers
+  are the subscription itself (modules licensed, number of users/seats, and
+  system size) and, for on-premises deployments, the customer's own
+  infrastructure. Integration effort (building and maintaining connectors to the
+  SOAP/XML Web Service, Open API, and Digital Freight Portal REST API) is an
+  internal engineering cost rather than a Magaya invoice line.
+notes: >-
+  Per-unit or per-call API rates do not exist; Magaya does not bill the API as a
+  metered service. Verify subscription terms and any overage/professional-services
+  fees with Magaya sales during reconciliation.
+sources:
+- https://www.magaya.com/
+- https://www.magaya.com/magaya-open-api/
+- https://www.getapp.com/transportation-logistics-software/a/magaya-cargo-system/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Magaya
+serviceCategory: Logistics and Supply Chain Software
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Magaya Digital Freight Platform
+  ServiceCategory: Logistics and Supply Chain Software
+  ProviderName: Magaya
+  PublisherName: Magaya
+  InvoiceIssuerName: Magaya
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: platform_subscription
+  description: Recurring subscription to the Magaya Digital Freight Platform and licensed modules; the API is included, not metered.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - module
+- name: users
+  description: Licensed users/seats on the Magaya system, a primary pricing dimension.
+  unit: users
+  aggregation: max
+  dimensions:
+  - account
+- name: integration_engineering
+  description: Internal cost of building and maintaining connectors to the Magaya API, Open API, and Digital Freight Portal REST API.
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - team
+- name: onprem_infrastructure
+  description: Infrastructure cost of running an on-premises Magaya deployment, where applicable (no Magaya invoice).
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - deployment
+principles:
+- name: Visibility
+  description: Track the Magaya subscription, licensed modules, and seat count as fixed recurring cost; the API itself is not separately metered.
+- name: Allocation
+  description: Attribute the platform subscription and integration engineering effort to the logistics workflows and teams that depend on Magaya data.
+- name: Optimization
+  description: License only the modules in use, right-size seats, and prefer incremental (updatedSince) synchronization to keep integration compute low.
+- name: Accountability
+  description: Assign an owner for the Magaya subscription and for each integration; review module usage and seat counts against the contract periodically.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

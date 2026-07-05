@@ -1,0 +1,146 @@
+{
+  "info": {
+    "name": "Magaya API (Modeled)",
+    "description": "Modeled REST representation of the Magaya logistics object model (Shipments, Warehouse Receipts, Invoices, Items, Transactions). Magaya's own API is gated: it requires a Magaya subscription and a dedicated API user configured in the customer's own tenant, reached at a per-tenant base URL of the form https://SYSTEMID.magayacloud.com/api. The historical Magaya API is a SOAP/XML Web Service; the newer Magaya Open API is a collection of web services; the Digital Freight Portal REST API (developer.qwykportals.com) uses Auth0 OAuth. Paths, fields, and auth here are honestly modeled from Magaya's published object model, not a confirmed open self-serve reference.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiUsername}}", "type": "string" },
+      { "key": "password", "value": "{{apiPassword}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://SYSTEMID.magayacloud.com/api", "type": "string" },
+    { "key": "apiUsername", "value": "", "type": "string" },
+    { "key": "apiPassword", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "List shipments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/shipments", "host": ["{{baseUrl}}"], "path": ["shipments"] },
+            "description": "Lists shipments in the Magaya system. Modeled endpoint."
+          }
+        },
+        {
+          "name": "Create a shipment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"mode\": \"Ocean\",\n  \"origin\": \"USMIA\",\n  \"destination\": \"PABLB\"\n}" },
+            "url": { "raw": "{{baseUrl}}/shipments", "host": ["{{baseUrl}}"], "path": ["shipments"] },
+            "description": "Creates a shipment. Modeled endpoint."
+          }
+        },
+        {
+          "name": "Retrieve a shipment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/shipments/:guid", "host": ["{{baseUrl}}"], "path": ["shipments", ":guid"], "variable": [{ "key": "guid", "value": "" }] },
+            "description": "Retrieves a shipment by Magaya GUID. Modeled endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Warehouse Receipts",
+      "item": [
+        {
+          "name": "List warehouse receipts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/warehouse-receipts", "host": ["{{baseUrl}}"], "path": ["warehouse-receipts"] },
+            "description": "Lists warehouse receipts. Modeled endpoint."
+          }
+        },
+        {
+          "name": "Retrieve a warehouse receipt",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/warehouse-receipts/:guid", "host": ["{{baseUrl}}"], "path": ["warehouse-receipts", ":guid"], "variable": [{ "key": "guid", "value": "" }] },
+            "description": "Retrieves a warehouse receipt by GUID. Modeled endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "List invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices", "host": ["{{baseUrl}}"], "path": ["invoices"] },
+            "description": "Lists accounts-receivable invoices. Modeled endpoint."
+          }
+        },
+        {
+          "name": "Retrieve an invoice",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/:guid", "host": ["{{baseUrl}}"], "path": ["invoices", ":guid"], "variable": [{ "key": "guid", "value": "" }] },
+            "description": "Retrieves an invoice by GUID. Modeled endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Items",
+      "item": [
+        {
+          "name": "List items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/items", "host": ["{{baseUrl}}"], "path": ["items"] },
+            "description": "Lists item and commodity master data. Modeled endpoint."
+          }
+        },
+        {
+          "name": "Retrieve an item",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/items/:guid", "host": ["{{baseUrl}}"], "path": ["items", ":guid"], "variable": [{ "key": "guid", "value": "" }] },
+            "description": "Retrieves an item by GUID. Modeled endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "List transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/transactions?type=Booking", "host": ["{{baseUrl}}"], "path": ["transactions"], "query": [{ "key": "type", "value": "Booking" }] },
+            "description": "Lists Magaya transaction documents (pickup orders, bookings, quotations, orders, releases). Modeled endpoint."
+          }
+        },
+        {
+          "name": "Retrieve a transaction",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/transactions/:guid", "host": ["{{baseUrl}}"], "path": ["transactions", ":guid"], "variable": [{ "key": "guid", "value": "" }] },
+            "description": "Retrieves a transaction by GUID. Modeled endpoint."
+          }
+        }
+      ]
+    }
+  ]
+}

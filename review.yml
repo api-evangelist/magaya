@@ -1,0 +1,105 @@
+aid: magaya
+name: Magaya
+review:
+  question: Does Magaya expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Magaya's programmatic surfaces are
+    request/response: the historical Magaya API is a SOAP/XML Web Service over
+    HTTP, the newer Magaya Open API is a collection of HTTP web services, and
+    the Digital Freight Portal API (from the Qwyk acquisition) is REST over
+    HTTPS with Auth0 OAuth. None of these is a server-push transport. Magaya
+    surfaces shipment "shipping events" / milestones as data fields and via
+    portal tracking, not as a public WebSocket or SSE stream, so there is no
+    event-driven transport on Magaya's own API to model.
+findings:
+  summary: |
+    Magaya does not publish a documented public WebSocket API. Magaya is a
+    logistics and supply chain software vendor whose Digital Freight Platform
+    exposes the objects inside a customer's system - Shipments, Warehouse
+    Receipts, Invoices, Items, and financial Transactions (pickup orders,
+    bookings, quotations, sales/purchase orders, cargo releases). Access is
+    request/response over HTTP(S): the original Magaya API is a SOAP/XML Web
+    Service, the newer Magaya Open API is a collection of web services, and the
+    Digital Freight Portal REST API (developer.qwykportals.com, inherited from
+    the Qwyk acquisition) is REST with Auth0 machine-to-machine OAuth. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint
+    is documented on any Magaya API as of the review date.
+  accessModel: |
+    Gated. All Magaya APIs require a licensed Magaya subscription. The Magaya
+    API and Open API run against the customer's own tenant at a per-tenant base
+    URL of the form https://SYSTEMID.magayacloud.com/api (on-premises systems
+    expose an equivalent host) and authenticate with a dedicated API user
+    (username/password) configured inside the Magaya system - not a self-serve
+    public API key. The Digital Freight Portal REST API uses Auth0 M2M OAuth
+    clients provisioned for customers/partners. Reference documentation is
+    publicly readable (help.magaya.com, developer.qwykportals.com,
+    magaya.com/magaya-open-api), but there is no open self-serve signup, so the
+    modeled REST paths in this repo are honestly reconstructed from Magaya's
+    published object model rather than confirmed against an open reference.
+  endpointsModeled: true
+  transports:
+    - protocol: SOAP
+      scheme: https
+      baseURL: https://SYSTEMID.magayacloud.com/api
+      documented: true
+      note: The original Magaya API is a SOAP/XML Web Service over HTTP. Per-tenant base URL; API-user auth.
+    - protocol: REST
+      scheme: https
+      baseURL: https://SYSTEMID.magayacloud.com/api
+      documented: true
+      note: The Magaya Open API is a collection of HTTP web services over the same per-tenant tenant; and the Digital Freight Portal API is REST at developer.qwykportals.com with Auth0 OAuth.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented on the Magaya API, Open API, or Digital Freight Portal API as of the review date.
+  endpointsModeledRest:
+    - GET  https://SYSTEMID.magayacloud.com/api/shipments
+    - POST https://SYSTEMID.magayacloud.com/api/shipments
+    - GET  https://SYSTEMID.magayacloud.com/api/shipments/{guid}
+    - GET  https://SYSTEMID.magayacloud.com/api/warehouse-receipts
+    - POST https://SYSTEMID.magayacloud.com/api/warehouse-receipts
+    - GET  https://SYSTEMID.magayacloud.com/api/warehouse-receipts/{guid}
+    - GET  https://SYSTEMID.magayacloud.com/api/invoices
+    - POST https://SYSTEMID.magayacloud.com/api/invoices
+    - GET  https://SYSTEMID.magayacloud.com/api/invoices/{guid}
+    - GET  https://SYSTEMID.magayacloud.com/api/items
+    - POST https://SYSTEMID.magayacloud.com/api/items
+    - GET  https://SYSTEMID.magayacloud.com/api/items/{guid}
+    - GET  https://SYSTEMID.magayacloud.com/api/transactions
+    - GET  https://SYSTEMID.magayacloud.com/api/transactions/{guid}
+  note: |
+    The endpoints above are MODELED from Magaya's published object model, not
+    copied from a confirmed open reference. The real operation names may follow
+    Magaya's SOAP/XML Web Service conventions or the Open API web-service
+    surface rather than these REST paths. Confirm against the documentation for
+    your Magaya edition and version.
+sources:
+  - url: https://www.magaya.com/magaya-open-api/
+    type: Documentation
+    note: Magaya Open API landing page - collection of web services covering shipments, bookings, quotes, rates, invoices, bills, inventory balances, shipping events, document attachments, master data, warehousing.
+  - url: https://www.magaya.com/downloads/marketing/brochure/magaya-api.html
+    type: Documentation
+    note: Magaya API brochure - describes the API as an XML Web Service using SOAP over HTTP, exposing invoices, bills, sales/purchase/pickup orders, and shipments.
+  - url: https://help.magaya.com/s/document-item?language=en_US&bundleId=magaya-api
+    type: Documentation
+    note: Magaya API help bundle (customer-facing reference).
+  - url: https://developer.qwykportals.com/
+    type: APIReference
+    note: Digital Freight Portal (Qwyk) REST API reference, Stoplight-hosted; Auth0 M2M OAuth.
+  - url: https://github.com/magaya-dev
+    type: SourceCode
+    note: Magaya developer GitHub org - extension SDK (hyperion-node, hyperion-express-middleware) using a connection string and, for writes in v11.2+, an API key with a client identifier. Not a standalone public REST API.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and Magaya's own APIs are
+    request/response (SOAP/XML Web Service, HTTP web services, and REST with
+    OAuth). No AsyncAPI document was created because there is no server-push
+    transport on any Magaya API to model. The apis.yml documents five modeled
+    logical APIs (Shipments, Warehouse Receipts, Invoices, Items, Transactions)
+    and flags the access model as gated and the endpoints as modeled.
