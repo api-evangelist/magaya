@@ -153,6 +153,10 @@ apis:
     Endpoints are modeled from Magaya's published transaction object model and flagged
     as unconfirmed against an open self-serve reference.
 common:
+- type: DomainSecurity
+  url: security/magaya-domain-security.yml
+- type: Authentication
+  url: authentication/magaya-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/magaya-dev
 - type: LinkedIn

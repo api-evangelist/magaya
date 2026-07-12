@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/magaya-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: apiUser
+  type: http
+  scheme: basic
+  description: Magaya API user. A dedicated API user (username and password) is configured inside
+    the Magaya system, distinct from a regular login user. The Digital Freight Portal REST API
+    instead uses Auth0 machine-to-machine OAuth client credentials.
+  sources:
+  - openapi/magaya-openapi.yml
