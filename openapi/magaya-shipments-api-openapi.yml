@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: Magaya API (Modeled) Invoices Shipments API
+  description: 'A modeled REST representation of the Magaya logistics object model exposed to integrators of the Magaya Digital Freight Platform. Magaya''s own programmatic surfaces are (1) the Magaya API, historically a SOAP/XML Web Service reached at a per-tenant base of the form https://SYSTEMID.magayacloud.com/api and authenticated with a dedicated API user (username/password) configured inside the Magaya system; (2) the newer Magaya Open API, a collection of web services covering shipments, bookings, quotes, rates, invoices, bills, inventory balances, shipping events, document attachments, organization master data, and warehousing; and (3) the REST Digital Freight Portal API inherited from the Qwyk acquisition (developer.qwykportals.com), authenticated with Auth0 machine-to-machine OAuth clients.
+
+    This OpenAPI document does NOT reproduce a confirmed open self-serve reference. Access to any Magaya API requires a licensed Magaya subscription and a configured API user, so the paths, parameters, and schemas here are honestly modeled from Magaya''s published object model (Shipments, Warehouse Receipts, Invoices, Items, and Transactions) to give integrators a starting map. Verify exact operation names, fields, and authentication against the documentation for your Magaya edition and version before building.'
+  version: 0.1-modeled
+  contact:
+    name: Magaya
+    url: https://www.magaya.com/
+  x-access-model: Gated. Requires a Magaya subscription and an API user configured in the customer's own tenant. Public reference documentation exists, but there is no open self-serve API key signup. Base URL is per-tenant (https://SYSTEMID.magayacloud.com/api).
+  x-endpoints-modeled: true
+servers:
+- url: https://SYSTEMID.magayacloud.com/api
+  description: Per-tenant Magaya Cloud base URL. Replace SYSTEMID with your Magaya System ID. On-premises deployments expose an equivalent host on the customer's network.
+security:
+- apiUser: []
+tags:
+- name: Shipments
+  description: Air, ocean, and ground shipment records and their tracking events.
+paths:
+  /shipments:
+    get:
+      operationId: listShipments
+      tags:
+      - Shipments
+      summary: List shipments
+      description: Lists shipments in the Magaya system. Modeled endpoint - confirm the exact operation against your Magaya edition.
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      - name: updatedSince
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return shipments modified on or after this timestamp.
+      responses:
+        '200':
+          description: A page of shipments.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Shipment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createShipment
+      tags:
+      - Shipments
+      summary: Create a shipment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+      responses:
+        '201':
+          description: The created shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /shipments/{guid}:
+    get:
+      operationId: getShipment
+      tags:
+      - Shipments
+      summary: Retrieve a shipment
+      parameters:
+      - $ref: '#/components/parameters/Guid'
+      responses:
+        '200':
+          description: The requested shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Shipment:
+      type: object
+      properties:
+        guid:
+          type: string
+        number:
+          type: string
+          description: Shipment number.
+        mode:
+          type: string
+          enum:
+          - Air
+          - Ocean
+          - Ground
+        shipper:
+          $ref: '#/components/schemas/Party'
+        consignee:
+          $ref: '#/components/schemas/Party'
+        origin:
+          type: string
+        destination:
+          type: string
+        status:
+          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingEvent'
+        createdOn:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ShippingEvent:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        occurredOn:
+          type: string
+          format: date-time
+    Party:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        country:
+          type: string
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 50
+        maximum: 500
+      description: Maximum number of records to return.
+    Guid:
+      name: guid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The Magaya object GUID identifying the record.
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Number of records to skip for pagination.
+  responses:
+    Unauthorized:
+      description: Authentication failed or the API user is not authorized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested record was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    apiUser:
+      type: http
+      scheme: basic
+      description: Magaya API user. A dedicated API user (username and password) is configured inside the Magaya system, distinct from a regular login user. The Digital Freight Portal REST API instead uses Auth0 machine-to-machine OAuth client credentials.
