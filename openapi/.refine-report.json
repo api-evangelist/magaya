@@ -1,0 +1,22 @@
+{
+  "provider": "magaya",
+  "sources": [
+    "magaya-invoices-api-openapi.yml",
+    "magaya-items-api-openapi.yml",
+    "magaya-shipments-api-openapi.yml",
+    "magaya-transactions-api-openapi.yml",
+    "magaya-warehouse-receipts-api-openapi.yml"
+  ],
+  "outputs": [
+    "magaya-invoices-api-openapi.yml",
+    "magaya-items-api-openapi.yml",
+    "magaya-shipments-api-openapi.yml",
+    "magaya-transactions-api-openapi.yml",
+    "magaya-warehouse-receipts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
