@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "6bb8a6f9-cb2e-498d-a530-374b536ef119",
+      "name": "Warehouse Receipts",
+      "description": {
+        "content": "Cargo received into a Magaya-managed warehouse and inventory balances.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "326e1666-76f6-4891-8f9d-ad55b593750d",
+          "name": "List warehouse receipts",
+          "request": {
+            "name": "List warehouse receipts",
+            "description": {},
+            "url": {
+              "path": [
+                "warehouse-receipts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1f5586b-653d-4490-a658-e030f0408aad",
+              "name": "A page of warehouse receipts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouse-receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"guid\": \"string\",\n      \"number\": \"string\",\n      \"warehouse\": \"string\",\n      \"supplier\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"pieces\": 9615,\n      \"weight\": 1787.9367576251548,\n      \"volume\": 3219.134064165988,\n      \"items\": [\n        {\n          \"guid\": \"string\",\n          \"partNumber\": \"string\",\n          \"description\": \"string\",\n          \"unit\": \"string\",\n          \"weight\": 7378.780967715911,\n          \"volume\": 8900.153227401663,\n          \"onHand\": 3696.61450531055\n        },\n        {\n          \"guid\": \"string\",\n          \"partNumber\": \"string\",\n          \"description\": \"string\",\n          \"unit\": \"string\",\n          \"weight\": 3733.6078301609987,\n          \"volume\": 4164.536019998968,\n          \"onHand\": 8518.859699349961\n        }\n      ],\n      \"receivedOn\": \"2007-03-30T10:12:24.081Z\"\n    },\n    {\n      \"guid\": \"string\",\n      \"number\": \"string\",\n      \"warehouse\": \"string\",\n      \"supplier\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"pieces\": 4766,\n      \"weight\": 2140.3366898550958,\n      \"volume\": 3684.7104202358496,\n      \"items\": [\n        {\n          \"guid\": \"string\",\n          \"partNumber\": \"string\",\n          \"description\": \"string\",\n          \"unit\": \"string\",\n          \"weight\": 484.1852313783912,\n          \"volume\": 7572.735102813856,\n          \"onHand\": 895.3444028170909\n        },\n        {\n          \"guid\": \"string\",\n          \"partNumber\": \"string\",\n          \"description\": \"string\",\n          \"unit\": \"string\",\n          \"weight\": 6373.324222372739,\n          \"volume\": 1503.0422293099666,\n          \"onHand\": 9374.850683268649\n        }\n      ],\n      \"receivedOn\": \"1978-05-23T01:10:02.701Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a65a857e-4118-4c76-8d18-c23088177b87",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouse-receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb7a4d84-4d1c-4650-8bd0-c1d0b57153ef",
+          "name": "Create a warehouse receipt",
+          "request": {
+            "name": "Create a warehouse receipt",
+            "description": {},
+            "url": {
+              "path": [
+                "warehouse-receipts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"warehouse\": \"<string>\",\n  \"supplier\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"pieces\": \"<integer>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"items\": [\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    }\n  ],\n  \"receivedOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4d946d3-527d-4d4e-acdd-d5677455b902",
+              "name": "The created warehouse receipt.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouse-receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"warehouse\": \"<string>\",\n  \"supplier\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"pieces\": \"<integer>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"items\": [\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    }\n  ],\n  \"receivedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"warehouse\": \"<string>\",\n  \"supplier\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"pieces\": \"<integer>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"items\": [\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    }\n  ],\n  \"receivedOn\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7eda7198-72b1-411e-920e-6c132f1c8673",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouse-receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"warehouse\": \"<string>\",\n  \"supplier\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"pieces\": \"<integer>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"items\": [\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    }\n  ],\n  \"receivedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "929ec412-0fe5-40e0-8bc5-3000369b72a7",
+          "name": "Retrieve a warehouse receipt",
+          "request": {
+            "name": "Retrieve a warehouse receipt",
+            "description": {},
+            "url": {
+              "path": [
+                "warehouse-receipts",
+                ":guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "guid",
+                  "description": "(Required) The Magaya object GUID identifying the record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "967134fd-4f9a-40e9-8502-72118e893dd4",
+              "name": "The requested warehouse receipt.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouse-receipts",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"warehouse\": \"<string>\",\n  \"supplier\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"pieces\": \"<integer>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"items\": [\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"partNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"volume\": \"<number>\",\n      \"onHand\": \"<number>\"\n    }\n  ],\n  \"receivedOn\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2fc7879-dd4d-443e-b147-f75bfc2740e2",
+              "name": "The requested record was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouse-receipts",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://SYSTEMID.magayacloud.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0d781d09-6e68-47d1-ab1a-bfb03f5d5bae",
+    "name": "Magaya API (Modeled) Invoices Warehouse Receipts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A modeled REST representation of the Magaya logistics object model exposed to integrators of the Magaya Digital Freight Platform. Magaya's own programmatic surfaces are (1) the Magaya API, historically a SOAP/XML Web Service reached at a per-tenant base of the form https://SYSTEMID.magayacloud.com/api and authenticated with a dedicated API user (username/password) configured inside the Magaya system; (2) the newer Magaya Open API, a collection of web services covering shipments, bookings, quotes, rates, invoices, bills, inventory balances, shipping events, document attachments, organization master data, and warehousing; and (3) the REST Digital Freight Portal API inherited from the Qwyk acquisition (developer.qwykportals.com), authenticated with Auth0 machine-to-machine OAuth clients.\nThis OpenAPI document does NOT reproduce a confirmed open self-serve reference. Access to any Magaya API requires a licensed Magaya subscription and a configured API user, so the paths, parameters, and schemas here are honestly modeled from Magaya's published object model (Shipments, Warehouse Receipts, Invoices, Items, and Transactions) to give integrators a starting map. Verify exact operation names, fields, and authentication against the documentation for your Magaya edition and version before building.\n\nContact Support:\n Name: Magaya",
+      "type": "text/plain"
+    }
+  }
+}

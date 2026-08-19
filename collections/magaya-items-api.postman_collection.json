@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "0b60cbe3-5b89-45e5-87c2-3a565f2d36ea",
+      "name": "Items",
+      "description": {
+        "content": "Item and commodity master data referenced across transactions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e45aa99b-5475-4407-8419-b62d6b559e5f",
+          "name": "List items",
+          "request": {
+            "name": "List items",
+            "description": {},
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "daef138e-d315-41b2-8b00-4c350b1f418c",
+              "name": "A page of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"guid\": \"string\",\n      \"partNumber\": \"string\",\n      \"description\": \"string\",\n      \"unit\": \"string\",\n      \"weight\": 8922.059848549012,\n      \"volume\": 4355.614366294583,\n      \"onHand\": 4611.17363932897\n    },\n    {\n      \"guid\": \"string\",\n      \"partNumber\": \"string\",\n      \"description\": \"string\",\n      \"unit\": \"string\",\n      \"weight\": 4822.246363739054,\n      \"volume\": 6038.995294804112,\n      \"onHand\": 6572.499690194472\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f15e8bd-711e-47c6-8d4a-b798f12e6ad2",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a5b278b-39e4-407c-afa5-1dbc2132e059",
+          "name": "Create an item",
+          "request": {
+            "name": "Create an item",
+            "description": {},
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"onHand\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c03fe74-cdfb-4cf9-ac41-586c26618404",
+              "name": "The created item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"onHand\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"onHand\": \"<number>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73ba10f3-55f8-40f3-92b3-a89e9754fe47",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"onHand\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cb37eb1-b062-442e-8539-642f7b950e17",
+          "name": "Retrieve an item",
+          "request": {
+            "name": "Retrieve an item",
+            "description": {},
+            "url": {
+              "path": [
+                "items",
+                ":guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "guid",
+                  "description": "(Required) The Magaya object GUID identifying the record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98fe1f52-b186-4336-b4cc-a96110bd6bd8",
+              "name": "The requested item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"volume\": \"<number>\",\n  \"onHand\": \"<number>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae1ba83f-5778-4f93-9377-6019f4d674e6",
+              "name": "The requested record was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://SYSTEMID.magayacloud.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05dbbf38-3daf-4ab2-9f86-5e863aadc413",
+    "name": "Magaya API (Modeled) Invoices Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A modeled REST representation of the Magaya logistics object model exposed to integrators of the Magaya Digital Freight Platform. Magaya's own programmatic surfaces are (1) the Magaya API, historically a SOAP/XML Web Service reached at a per-tenant base of the form https://SYSTEMID.magayacloud.com/api and authenticated with a dedicated API user (username/password) configured inside the Magaya system; (2) the newer Magaya Open API, a collection of web services covering shipments, bookings, quotes, rates, invoices, bills, inventory balances, shipping events, document attachments, organization master data, and warehousing; and (3) the REST Digital Freight Portal API inherited from the Qwyk acquisition (developer.qwykportals.com), authenticated with Auth0 machine-to-machine OAuth clients.\nThis OpenAPI document does NOT reproduce a confirmed open self-serve reference. Access to any Magaya API requires a licensed Magaya subscription and a configured API user, so the paths, parameters, and schemas here are honestly modeled from Magaya's published object model (Shipments, Warehouse Receipts, Invoices, Items, and Transactions) to give integrators a starting map. Verify exact operation names, fields, and authentication against the documentation for your Magaya edition and version before building.\n\nContact Support:\n Name: Magaya",
+      "type": "text/plain"
+    }
+  }
+}

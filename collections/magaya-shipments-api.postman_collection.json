@@ -1,0 +1,555 @@
+{
+  "item": [
+    {
+      "id": "265ecf06-1088-4fc1-aa81-5c7098344307",
+      "name": "Shipments",
+      "description": {
+        "content": "Air, ocean, and ground shipment records and their tracking events.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "702155c3-7752-4bde-89e4-68afbcc74b49",
+          "name": "List shipments",
+          "request": {
+            "name": "List shipments",
+            "description": {
+              "content": "Lists shipments in the Magaya system. Modeled endpoint - confirm the exact operation against your Magaya edition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedSince",
+                  "value": "<dateTime>",
+                  "description": "Return shipments modified on or after this timestamp."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71ee699a-c814-4432-86ea-49a553e27ef3",
+              "name": "A page of shipments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"guid\": \"string\",\n      \"number\": \"string\",\n      \"mode\": \"Air\",\n      \"shipper\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"consignee\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"origin\": \"string\",\n      \"destination\": \"string\",\n      \"status\": \"string\",\n      \"events\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"location\": \"string\",\n          \"occurredOn\": \"2008-09-05T16:09:30.140Z\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"location\": \"string\",\n          \"occurredOn\": \"1959-08-16T22:36:51.751Z\"\n        }\n      ],\n      \"createdOn\": \"1962-10-27T12:09:53.052Z\"\n    },\n    {\n      \"guid\": \"string\",\n      \"number\": \"string\",\n      \"mode\": \"Air\",\n      \"shipper\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"consignee\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"origin\": \"string\",\n      \"destination\": \"string\",\n      \"status\": \"string\",\n      \"events\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"location\": \"string\",\n          \"occurredOn\": \"1969-10-27T17:37:35.565Z\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"location\": \"string\",\n          \"occurredOn\": \"1951-11-16T18:16:31.667Z\"\n        }\n      ],\n      \"createdOn\": \"2018-06-21T15:15:27.512Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2b362df-a3fc-4b07-bfbd-ddcd262fbb9c",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c5763d7-fa53-421a-8da5-6fc5a7d05486",
+          "name": "Create a shipment",
+          "request": {
+            "name": "Create a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"mode\": \"<string>\",\n  \"shipper\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"consignee\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"status\": \"<string>\",\n  \"events\": [\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    }\n  ],\n  \"createdOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee0809e6-8a19-4193-b64f-42e2cb89a924",
+              "name": "The created shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"mode\": \"<string>\",\n  \"shipper\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"consignee\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"status\": \"<string>\",\n  \"events\": [\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    }\n  ],\n  \"createdOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"mode\": \"<string>\",\n  \"shipper\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"consignee\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"status\": \"<string>\",\n  \"events\": [\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    }\n  ],\n  \"createdOn\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b061ebc-98b2-4021-a1bf-0dcef07d76d6",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"mode\": \"<string>\",\n  \"shipper\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"consignee\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"status\": \"<string>\",\n  \"events\": [\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    }\n  ],\n  \"createdOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d585cd1e-6a97-458c-b6da-8bbcce1afe8a",
+          "name": "Retrieve a shipment",
+          "request": {
+            "name": "Retrieve a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "guid",
+                  "description": "(Required) The Magaya object GUID identifying the record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a471630-7537-4c6a-a325-6c2ca5adaa0e",
+              "name": "The requested shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"mode\": \"<string>\",\n  \"shipper\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"consignee\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"status\": \"<string>\",\n  \"events\": [\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"location\": \"<string>\",\n      \"occurredOn\": \"<dateTime>\"\n    }\n  ],\n  \"createdOn\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18401d7c-14a2-4e52-9adf-819d308c4572",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce089907-82d9-49b1-a4d5-ee5192c76475",
+              "name": "The requested record was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://SYSTEMID.magayacloud.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b02b0433-888f-492d-ab27-7e3b544af421",
+    "name": "Magaya API (Modeled) Invoices Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A modeled REST representation of the Magaya logistics object model exposed to integrators of the Magaya Digital Freight Platform. Magaya's own programmatic surfaces are (1) the Magaya API, historically a SOAP/XML Web Service reached at a per-tenant base of the form https://SYSTEMID.magayacloud.com/api and authenticated with a dedicated API user (username/password) configured inside the Magaya system; (2) the newer Magaya Open API, a collection of web services covering shipments, bookings, quotes, rates, invoices, bills, inventory balances, shipping events, document attachments, organization master data, and warehousing; and (3) the REST Digital Freight Portal API inherited from the Qwyk acquisition (developer.qwykportals.com), authenticated with Auth0 machine-to-machine OAuth clients.\nThis OpenAPI document does NOT reproduce a confirmed open self-serve reference. Access to any Magaya API requires a licensed Magaya subscription and a configured API user, so the paths, parameters, and schemas here are honestly modeled from Magaya's published object model (Shipments, Warehouse Receipts, Invoices, Items, and Transactions) to give integrators a starting map. Verify exact operation names, fields, and authentication against the documentation for your Magaya edition and version before building.\n\nContact Support:\n Name: Magaya",
+      "type": "text/plain"
+    }
+  }
+}

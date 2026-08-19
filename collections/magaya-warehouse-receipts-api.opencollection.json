@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Magaya API (Modeled) Invoices Warehouse Receipts API",
+    "version": "0.1-modeled"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Warehouse Receipts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List warehouse receipts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/warehouse-receipts",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "List warehouse receipts"
+        },
+        {
+          "info": {
+            "name": "Create a warehouse receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://SYSTEMID.magayacloud.com/api/warehouse-receipts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a warehouse receipt"
+        },
+        {
+          "info": {
+            "name": "Retrieve a warehouse receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://SYSTEMID.magayacloud.com/api/warehouse-receipts/:guid",
+            "params": [
+              {
+                "name": "guid",
+                "value": "",
+                "type": "path",
+                "description": "The Magaya object GUID identifying the record."
+              }
+            ]
+          },
+          "docs": "Retrieve a warehouse receipt"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "3a3cf9da-5a37-40b5-a557-63069c961cc6",
+      "name": "Invoices",
+      "description": {
+        "content": "Accounts-receivable invoices and their charge lines.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9787b3c-b6cc-4c67-8b3d-66653a4fa72f",
+          "name": "List invoices",
+          "request": {
+            "name": "List invoices",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cec97b7f-93eb-4d0e-b534-2122e3f1e3f0",
+              "name": "A page of invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"guid\": \"string\",\n      \"number\": \"string\",\n      \"billTo\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"currency\": \"string\",\n      \"total\": 2101.852743925633,\n      \"relatedShipmentGuid\": \"string\",\n      \"charges\": [\n        {\n          \"description\": \"string\",\n          \"quantity\": 8384.519532051989,\n          \"rate\": 6865.10103868848,\n          \"amount\": 6817.421649652912\n        },\n        {\n          \"description\": \"string\",\n          \"quantity\": 3639.5703221268996,\n          \"rate\": 8333.23330942768,\n          \"amount\": 5806.042022969342\n        }\n      ],\n      \"issuedOn\": \"2003-02-19T03:50:51.688Z\"\n    },\n    {\n      \"guid\": \"string\",\n      \"number\": \"string\",\n      \"billTo\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"country\": \"string\"\n      },\n      \"currency\": \"string\",\n      \"total\": 5308.523227542881,\n      \"relatedShipmentGuid\": \"string\",\n      \"charges\": [\n        {\n          \"description\": \"string\",\n          \"quantity\": 436.55245675530693,\n          \"rate\": 7126.219065755102,\n          \"amount\": 7700.530829963237\n        },\n        {\n          \"description\": \"string\",\n          \"quantity\": 9949.921904173718,\n          \"rate\": 7739.231055605702,\n          \"amount\": 8752.584347176624\n        }\n      ],\n      \"issuedOn\": \"1991-12-30T12:04:00.771Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b4faece-dcae-49d9-9913-1fbbdcfbef18",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "069db57d-df37-4696-84b9-61e57daabffb",
+          "name": "Create an invoice",
+          "request": {
+            "name": "Create an invoice",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"total\": \"<number>\",\n  \"relatedShipmentGuid\": \"<string>\",\n  \"charges\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"issuedOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31e48c6f-4b40-4845-a9e5-bc5997f70fb5",
+              "name": "The created invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"total\": \"<number>\",\n  \"relatedShipmentGuid\": \"<string>\",\n  \"charges\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"issuedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"total\": \"<number>\",\n  \"relatedShipmentGuid\": \"<string>\",\n  \"charges\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"issuedOn\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d300855-f205-48a4-b1b5-014cc306531b",
+              "name": "Authentication failed or the API user is not authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"total\": \"<number>\",\n  \"relatedShipmentGuid\": \"<string>\",\n  \"charges\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"issuedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e1c10ad-cb5f-4f0f-819d-712669771faf",
+          "name": "Retrieve an invoice",
+          "request": {
+            "name": "Retrieve an invoice",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "guid",
+                  "description": "(Required) The Magaya object GUID identifying the record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "008840ed-c58c-4964-949c-9f1e031194d7",
+              "name": "The requested invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"<string>\",\n  \"number\": \"<string>\",\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"total\": \"<number>\",\n  \"relatedShipmentGuid\": \"<string>\",\n  \"charges\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"rate\": \"<number>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"issuedOn\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "703cb854-2f63-4924-86d6-91c5dbe58b8d",
+              "name": "The requested record was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) The Magaya object GUID identifying the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://SYSTEMID.magayacloud.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a4df85c-1e59-4050-892b-e3a8abee2910",
+    "name": "Magaya API (Modeled) Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A modeled REST representation of the Magaya logistics object model exposed to integrators of the Magaya Digital Freight Platform. Magaya's own programmatic surfaces are (1) the Magaya API, historically a SOAP/XML Web Service reached at a per-tenant base of the form https://SYSTEMID.magayacloud.com/api and authenticated with a dedicated API user (username/password) configured inside the Magaya system; (2) the newer Magaya Open API, a collection of web services covering shipments, bookings, quotes, rates, invoices, bills, inventory balances, shipping events, document attachments, organization master data, and warehousing; and (3) the REST Digital Freight Portal API inherited from the Qwyk acquisition (developer.qwykportals.com), authenticated with Auth0 machine-to-machine OAuth clients.\nThis OpenAPI document does NOT reproduce a confirmed open self-serve reference. Access to any Magaya API requires a licensed Magaya subscription and a configured API user, so the paths, parameters, and schemas here are honestly modeled from Magaya's published object model (Shipments, Warehouse Receipts, Invoices, Items, and Transactions) to give integrators a starting map. Verify exact operation names, fields, and authentication against the documentation for your Magaya edition and version before building.\n\nContact Support:\n Name: Magaya",
+      "type": "text/plain"
+    }
+  }
+}
