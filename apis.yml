@@ -65,6 +65,8 @@ apis:
   humanURL: https://www.magaya.com/magaya-open-api/
   baseURL: https://SYSTEMID.magayacloud.com/api
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -101,6 +103,8 @@ apis:
   humanURL: https://www.magaya.com/magaya-open-api/
   baseURL: https://SYSTEMID.magayacloud.com/api
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
