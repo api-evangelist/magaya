@@ -148,6 +148,9 @@ apis:
   - type: OpenCollection
     url: collections/magaya.opencollection.json
 common:
+- type: CapabilityMap
+  url: capabilities/magaya-capability-edges.yml
+  name: Magaya Business Capability Map
 - type: AgenticAccess
   url: agentic-access/magaya-agentic-access.yml
 - type: DomainSecurity

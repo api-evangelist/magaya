@@ -1,0 +1,37 @@
+slug: magaya
+provider: Magaya
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Invoices
+  spec_file: magaya-invoices-api-openapi.yml
+  capability_id: BC-2530.10
+  capability_id_l1: BC-2530
+  capability_name: Freight Invoicing Management
+  confidence: 0.75
+  evidence: '"POST /invoices createInvoice Create an invoice"; schemas: "Invoice, Party, Charge" within
+    the "Magaya Digital Freight Platform"'
+  reason: Invoice creation with Charge and Party structures inside a freight forwarding platform is generation
+    of freight/accessorial invoices to customers — Freight Invoicing Management. Some residual ambiguity
+    as to whether these are payable bills as well, hence 0.75.
+- tag: Warehouse Receipts
+  spec_file: magaya-warehouse-receipts-api-openapi.yml
+  capability_id: BC-2460.10
+  capability_id_l1: BC-2460
+  capability_name: Inbound Operations Management
+  confidence: 0.75
+  evidence: '"POST /warehouse-receipts createWarehouseReceipt Create a warehouse receipt"; schemas: "Item,
+    WarehouseReceipt, Party"'
+  reason: A warehouse receipt records goods received into a 3PL warehouse against items and parties, which
+    is the inbound receipt step of warehousing operations. Slight ambiguity as to whether Magaya's receipt
+    also drives storage/inventory operations, so 0.75.
