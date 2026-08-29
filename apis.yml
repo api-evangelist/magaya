@@ -15,6 +15,18 @@ description: Magaya is a logistics and supply chain software company whose cloud
   runtime access requires a licensed system, so the resource paths below are
   honestly modeled from Magaya's published object model rather than confirmed
   against an open self-serve reference.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
