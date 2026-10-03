@@ -88,19 +88,31 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested record was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or the API user is not authorized.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 50
+        maximum: 500
+      description: Maximum number of records to return.
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Number of records to skip for pagination.
+    Guid:
+      name: guid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The Magaya object GUID identifying the record.
   schemas:
     Shipment:
       type: object
@@ -133,6 +145,13 @@ components:
         createdOn:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     Party:
       type: object
       properties:
@@ -141,13 +160,6 @@ components:
         address:
           type: string
         country:
-          type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
           type: string
     ShippingEvent:
       type: object
@@ -161,31 +173,19 @@ components:
         occurredOn:
           type: string
           format: date-time
-  parameters:
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-      description: Number of records to skip for pagination.
-    Guid:
-      name: guid
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The Magaya object GUID identifying the record.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 50
-        maximum: 500
-      description: Maximum number of records to return.
+  responses:
+    NotFound:
+      description: The requested record was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or the API user is not authorized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     apiUser:
       type: http

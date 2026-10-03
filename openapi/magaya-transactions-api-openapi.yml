@@ -72,20 +72,16 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested record was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or the API user is not authorized.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 50
+        maximum: 500
+      description: Maximum number of records to return.
     Offset:
       name: offset
       in: query
@@ -101,15 +97,6 @@ components:
       schema:
         type: string
       description: The Magaya object GUID identifying the record.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 50
-        maximum: 500
-      description: Maximum number of records to return.
   schemas:
     Error:
       type: object
@@ -117,15 +104,6 @@ components:
         code:
           type: string
         message:
-          type: string
-    Party:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        country:
           type: string
     Transaction:
       type: object
@@ -144,6 +122,28 @@ components:
         createdOn:
           type: string
           format: date-time
+    Party:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        country:
+          type: string
+  responses:
+    NotFound:
+      description: The requested record was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or the API user is not authorized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     apiUser:
       type: http
