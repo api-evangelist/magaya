@@ -88,6 +88,13 @@ components:
         default: 50
         maximum: 500
       description: Maximum number of records to return.
+    Guid:
+      name: guid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The Magaya object GUID identifying the record.
     Offset:
       name: offset
       in: query
@@ -96,13 +103,6 @@ components:
         type: integer
         default: 0
       description: Number of records to skip for pagination.
-    Guid:
-      name: guid
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The Magaya object GUID identifying the record.
   schemas:
     Error:
       type: object
@@ -130,14 +130,14 @@ components:
           type: number
           description: Current inventory balance.
   responses:
-    NotFound:
-      description: The requested record was not found.
+    Unauthorized:
+      description: Authentication failed or the API user is not authorized.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or the API user is not authorized.
+    NotFound:
+      description: The requested record was not found.
       content:
         application/json:
           schema:
