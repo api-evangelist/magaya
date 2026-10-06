@@ -54,7 +54,7 @@ tags:
 - Customs
 - Transportation
 created: '2026-07-05'
-modified: '2026-07-05'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: magaya:magaya-invoices-api
@@ -152,6 +152,10 @@ apis:
   - type: OpenCollection
     url: collections/magaya.opencollection.json
 common:
+- url: https://www.magaya.com/insights-by-magaya/
+  type: Blog
+- url: https://www.magaya.com/feed/
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/magaya-capability-edges.yml
   name: Magaya Business Capability Map
