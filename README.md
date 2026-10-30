@@ -1,4 +1,4 @@
-# Magaya (magaya)
+# Magaya
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,97 +64,128 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Magaya is a logistics and supply chain software company. Its cloud Digital Freight Platform runs freight forwarding, warehouse management, US customs compliance, rate management, CRM, and a customer-facing digital experience portal. Magaya exposes the logistics objects inside a customer's system - **Shipments, Warehouse Receipts, Invoices, Items, and financial Transactions** - programmatically through the **Magaya API** (historically a SOAP/XML Web Service), the newer **Magaya Open API** (a collection of web services), and a **REST Digital Freight Portal API** inherited from the Qwyk acquisition.
+Magaya is a logistics and supply chain software company whose cloud Digital Freight Platform runs freight forwarding, warehouse management, customs compliance, rate management, and a digital customer experience portal. Magaya exposes programmatic access to the logistics objects inside a customer's system - Shipments, Warehouse Receipts, Invoices, Items, and financial Transactions - through the Magaya API (a SOAP/XML Web Service) and the newer Magaya Open API collection of web services, plus a REST Digital Freight Portal API inherited from the Qwyk acquisition. API access is gated behind a Magaya subscription and a dedicated API user configured in the customer's own tenant (base URL of the form https://SYSTEMID.magayacloud.com/api); the reference documentation is public but runtime access requires a licensed system, so the resource paths below are honestly modeled from Magaya's published object model rather than confirmed against an open self-serve reference.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/magaya/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/magaya/refs/heads/main/apis.yml)
+**Areas:** Logistics · Supply Chain · Freight Forwarding · Warehouse Management · Shipping · Customs · Transportation
 
-## Access model (read this first)
+## Magaya on APIs.io
 
-Magaya's APIs are **gated, not open self-serve**:
+Everything profiled for Magaya is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/magaya/](https://apis.io/providers/magaya/)** — or go straight to one of the APIs or properties below.
 
-- Using any Magaya API requires a **licensed Magaya subscription**. Pricing is quote-based (contact sales); there is no public API price sheet and no free API tier.
-- The Magaya API and Open API run against the **customer's own tenant**. The base URL is per-tenant, of the form `https://SYSTEMID.magayacloud.com/api` (on-premises deployments expose an equivalent host on the customer's network), where `SYSTEMID` is the Magaya System ID.
-- Authentication uses a **dedicated API user** (username/password) configured inside the Magaya system - separate from a normal login user. The Digital Freight Portal REST API instead uses **Auth0 machine-to-machine OAuth** clients.
-- Reference documentation is publicly readable ([help.magaya.com](https://help.magaya.com/s/document-item?language=en_US&bundleId=magaya-api), [developer.qwykportals.com](https://developer.qwykportals.com/), [magaya.com/magaya-open-api](https://www.magaya.com/magaya-open-api/)), but there is **no open API key signup**.
+### APIs (5)
 
-Because there is no open self-serve reference to crawl, the REST paths in `openapi/`, `collections/`, and `apis.yml` are **honestly modeled** from Magaya's published object model rather than confirmed against a live open reference. The real operation names may follow Magaya's SOAP/XML Web Service conventions or the Open API web-service surface. `endpointsModeled` is flagged `true` in `review.yml`. Confirm exact operations, fields, and auth against the documentation for your Magaya edition and version before building.
+- [Magaya Invoices API](https://apis.io/apis/magaya/magaya-invoices-api/) — Accounts-receivable invoices and their charge lines.
+- [Magaya Items API](https://apis.io/apis/magaya/magaya-items-api/) — Item and commodity master data referenced across transactions.
+- [Magaya Shipments API](https://apis.io/apis/magaya/magaya-shipments-api/) — Air, ocean, and ground shipment records and their tracking events.
+- [Magaya Transactions API](https://apis.io/apis/magaya/magaya-transactions-api/) — Generic Magaya transaction documents - orders, bookings, quotes, releases.
+- [Magaya Warehouse Receipts API](https://apis.io/apis/magaya/magaya-warehouse-receipts-api/) — Cargo received into a Magaya-managed warehouse and inventory balances.
 
-## Tags
+### Published properties
 
-- Logistics
-- Supply Chain
-- Freight Forwarding
-- Warehouse Management
-- Shipping
-- Customs
-- Transportation
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Agentic access (1)
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs (modeled)
+- [Magaya Agentic Access](https://apis.io/agentic-access/magaya/magaya-agentic-access/)
 
-### Magaya Shipments API
+#### Collections (6)
 
-Programmatic access to air, ocean, and ground shipments - list, retrieve, and create shipment records with consignee, shipper, routing, cargo, and milestone/tracking event data.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://www.magaya.com/magaya-open-api/](https://www.magaya.com/magaya-open-api/)
-- **Base URL:** `https://SYSTEMID.magayacloud.com/api`
+- [Magaya API (Modeled)](https://apis.io/collections/magaya/open-magaya/)
+- [Magaya API (Modeled) Invoices API](https://apis.io/collections/magaya/open-magaya-invoices-api/)
+- [Magaya API (Modeled) Invoices Items API](https://apis.io/collections/magaya/open-magaya-items-api/)
+- [Magaya API (Modeled) Invoices Shipments API](https://apis.io/collections/magaya/open-magaya-shipments-api/)
+- [Magaya API (Modeled) Invoices Transactions API](https://apis.io/collections/magaya/open-magaya-transactions-api/)
+- [Magaya API (Modeled) Invoices Warehouse Receipts API](https://apis.io/collections/magaya/open-magaya-warehouse-receipts-api/)
 
-### Magaya Warehouse Receipts API
+#### Security (2)
 
-Warehouse receipts and the cargo pieces, weights, volumes, and inventory balances recorded as goods are received into a Magaya-managed warehouse.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.magaya.com/magaya-open-api/](https://www.magaya.com/magaya-open-api/)
-- **Base URL:** `https://SYSTEMID.magayacloud.com/api`
+- [Magaya Authentication](https://apis.io/security/magaya/magaya-authentication/)
+- [Magaya Domain Security](https://apis.io/security/magaya/magaya-domain-security/)
 
-### Magaya Invoices API
+#### Plans and pricing (1)
 
-Accounts-receivable invoices with their line-item charges, currency, taxes, and links to the shipment or warehouse receipt being billed.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://www.magaya.com/magaya-open-api/](https://www.magaya.com/magaya-open-api/)
-- **Base URL:** `https://SYSTEMID.magayacloud.com/api`
+- [Magaya Plans Pricing](https://apis.io/plans/magaya/magaya-plans-pricing/)
 
-### Magaya Items API
+#### Rate limits (1)
 
-Item and commodity master data - the parts, products, and packaging definitions referenced by shipments, warehouse receipts, and orders, plus inventory balances.
+Published request limits.
 
-- **Human URL:** [https://www.magaya.com/magaya-open-api/](https://www.magaya.com/magaya-open-api/)
-- **Base URL:** `https://SYSTEMID.magayacloud.com/api`
+- [Magaya Rate Limits](https://apis.io/rate-limits/magaya/magaya-rate-limits/)
 
-### Magaya Transactions API
+#### FinOps (1)
 
-Generic access to Magaya transaction documents - pickup orders, bookings, quotations, sales orders, purchase orders, and cargo releases - that share Magaya's common transaction envelope.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://www.magaya.com/magaya-open-api/](https://www.magaya.com/magaya-open-api/)
-- **Base URL:** `https://SYSTEMID.magayacloud.com/api`
+- [Magaya Finops](https://apis.io/finops/magaya/magaya-finops/)
 
-## Artifacts
+## Where to find this API
 
-- [OpenAPI (modeled)](openapi/magaya-openapi.yml)
-- [Postman Collection](collections/magaya.postman_collection.json)
-- [Open Collection](collections/magaya.opencollection.json)
-- [Plans / Pricing](plans/magaya-plans-pricing.yml)
-- [Rate Limits](rate-limits/magaya-rate-limits.yml)
-- [FinOps](finops/magaya-finops.yml)
-- [Review](review.yml)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Common Properties
-
-- [GitHub Organization](https://github.com/magaya-dev)
-- [LinkedIn](https://www.linkedin.com/company/magaya-corporation-inc-)
 - [Website](https://www.magaya.com/)
 - [Documentation](https://help.magaya.com/s/document-item?language=en_US&bundleId=magaya-api)
-- [API Reference](https://developer.qwykportals.com/)
-- [Sign Up](https://www.magaya.com/start-here/)
+- [API reference](https://developer.qwykportals.com/)
+- [Sign up](https://www.magaya.com/start-here/)
+- [Blog](https://www.magaya.com/insights-by-magaya/)
+- [GitHub](https://github.com/magaya-dev)
 
-## WebSocket review
+## API Evangelist rating
 
-Magaya does **not** expose a documented public WebSocket API. All Magaya programmatic surfaces are request/response (SOAP/XML Web Service, HTTP web services, and REST with Auth0 OAuth). See [review.yml](review.yml).
+**Kin Score 27.7** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 43.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 18.4 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/magaya/](https://apis.io/providers/magaya/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Magaya: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/magaya/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
